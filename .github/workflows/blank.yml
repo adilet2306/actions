@@ -12,5 +12,6 @@ jobs:
     steps:
     - name: Checkout Terraform Repo
       uses: actions/checkout@v3
-      # with:
-      #   repository: adilet2306/terraform-blue-green-deployment
+      with:
+        repository: adilet2306/terraform-blue-green-deployment
+        token: ${{ secrets.TOKEN }}
