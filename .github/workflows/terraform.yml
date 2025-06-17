@@ -16,6 +16,10 @@ jobs:
         repository: adilet2306/terraform-blue-green-deployment
         token: ${{ secrets.TOKEN }}
 
+    - uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_version: "1.12.2"
+
     - name: Terraform Init
       run: terraform init
 
