@@ -1,16 +1,9 @@
 name: Deploy EC2 via Terraform
 
 on:
+  push:
+    branches: [ "main" ]
   workflow_dispatch:
-    inputs:
-      action:
-        description: 'Terraform action to perform'
-        required: true
-        default: 'apply'
-        type: choice
-        options:
-          - apply
-          - destroy
 
 jobs:
   deploy:
@@ -40,10 +33,5 @@ jobs:
     - name: Terraform Plan
       run: terraform plan
 
-    - name: Apply or Destroy
-      run: |
-        if [[ "${{ github.event.inputs.action }}" == "apply" ]]; then
-          terraform apply -auto-approve
-        else
-          terraform destroy -auto-approve
-        fi
+    - name: Terraform Apply
+      run: terraform destroy -auto-approve
